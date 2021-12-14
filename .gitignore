@@ -37,3 +37,9 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+
+
+# My added constraints
+*.jpg
+*.pdf
+scripts/TrialSpace.R
