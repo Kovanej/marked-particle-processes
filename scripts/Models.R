@@ -4,9 +4,11 @@
 # library(plotrix)
 # library(randomcoloR)
 
+source(file.path(paste0(getwd(), "/scripts"), "Colors.R"))
 source(file.path(paste0(getwd(), "/scripts"), "Germs.R"))
 source(file.path(paste0(getwd(), "/scripts"), "Grains.R"))
 source(file.path(paste0(getwd(), "/scripts"), "Markings.R"))
+source(file.path(paste0(getwd(), "/scripts"), "Plotting.R"))
 
 
 
@@ -98,17 +100,17 @@ getAndPlotTheBooleanModelRealization <- function(
     
   }
   
-  for (i in 1:markedBoolean[["Grains"]]$n){
-    
-    polygon(
-      x = markedBoolean[["Grains"]]$x[[i]], y = markedBoolean[["Grains"]]$y[[i]],
-      col = colorInterior[1], #colorInterior[markedBoolean[["Germs"]]$marks[i]], 
-      # density = 1,
-      # angle = 30 * floor(( abs(rnorm(n=1, mean=90, sd = 40)) / 30 )),
-      border = colorBorder,
-      # lty = "twodash"
+  if (grainsType == "rectangle"){
+    plotTheRectangles(
+      markedBoolean = markedBoolean, colorBorder = colorBorder, colorInterior = colorInterior
       )
-
   }
+  else if (grainsType == "circle"){
+    plotTheCircles(
+      markedBoolean = markedBoolean, colorBorder = colorBorder, colorInterior = colorInterior
+    )
+  }
+  
+  
   
 }

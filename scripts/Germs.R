@@ -64,6 +64,26 @@ appendTheRectangles <- function(
 
 appendTheCircles <- function(
   Germs, meanEdgeLength = 0.3, varEdgeLength = 0, onlyInside = TRUE
-) {
+  ){
+  
+  circles_vectors <- list()
+  
+  circles_vectors$center <- list()
+  circles_vectors$rad <- list()
+  
+  for (point_no in 1:Germs$n){
+    
+    x_cord <- Germs$x[point_no]
+    y_cord <- Germs$y[point_no]
+    
+    # todo not hardcoded
+    radius = abs(runif(n=1, min=0.2, max = 0.5))
+    
+    
+    
+  }
+  
+  polygons_vectors$n = Germs$n
+  
   
 }
