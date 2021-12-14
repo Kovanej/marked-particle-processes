@@ -68,13 +68,21 @@ appendTheCircles <- function(
   
   circles_vectors <- list()
   
-  circles_vectors$center <- list()
+  circles_vectors$center_x <- list()
   circles_vectors$rad <- list()
   
   for (point_no in 1:Germs$n){
     
     x_cord <- Germs$x[point_no]
     y_cord <- Germs$y[point_no]
+    
+    circles_vectors$x[[point_no]] = c(
+      x_low, x_upp, x_upp, x_low
+    )
+    
+    circles_vectors$y[[point_no]] = c(
+      y_low, y_low, y_upp, y_upp
+    )
     
     # todo not hardcoded
     radius = abs(runif(n=1, min=0.2, max = 0.5))
