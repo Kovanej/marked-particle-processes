@@ -11,14 +11,15 @@ source(file.path(paste0(getwd(), "/scripts"), "Markings.R"))
 
 
 
-poissInt = 100
-meanEdgeLength = 0.05
-varEdgeLength = 0.05
+poissInt = 50
+meanEdgeLength = 0.1
+varEdgeLength = 0.0
 colorBackground = "white" 
 colorBorder = "black"
 colorInterior = "random"
-equal_sites = TRUE
-only_inside = TRUE
+equalSites = TRUE
+onlyInside = TRUE
+pointPlotPch = 20
 
 
 bool_model = getAndPlotTheBooleanModelRealization(
@@ -28,8 +29,7 @@ bool_model = getAndPlotTheBooleanModelRealization(
   colorBackground = colorBackground, 
   colorBorder = colorBorder, 
   colorInterior = colorInterior,
-  equal_sites = equal_sites,
-  only_inside = only_inside
+  equalSites = equalSites,
+  onlyInside = onlyInside,
+  pointPlotPch = pointPlotPch
 )
-
-a = 1

@@ -12,7 +12,7 @@ generatePoisson <- function(lambda, homogeneous = TRUE){
 
 appendTheRectangles <- function(
   Germs, meanEdgeLength = 0.3, varEdgeLength = 0,
-  equal_sites = TRUE
+  equalSites = TRUE, onlyInside = TRUE
 ){
   
   polygons_vectors <- list()
@@ -26,18 +26,32 @@ appendTheRectangles <- function(
     y_cord <- Germs$y[point_no]
     
     edgeLength_x = abs(rnorm(n=1, mean=meanEdgeLength, sd = varEdgeLength))
-    if (equal_sites){
+    if (equalSites){
       edgeLength_y = edgeLength_x
     } else {
       edgeLength_y = abs(rnorm(n=1, mean=meanEdgeLength, sd = varEdgeLength))
     }
     
+    if (onlyInside){
+      # TODO: do we always use [0,1]^2 window?
+      x_low = max(0, x_cord - edgeLength_x/2)
+      x_upp = min(1, x_cord + edgeLength_x/2)
+      y_low = max(0, y_cord - edgeLength_y/2)
+      y_upp = min(1, y_cord + edgeLength_y/2)
+    }
+    else {
+      x_low = x_cord - edgeLength_x/2
+      x_upp = x_cord + edgeLength_x/2
+      y_low = y_cord - edgeLength_y/2
+      y_upp = y_cord + edgeLength_y/2
+    }
+    
     polygons_vectors$x[[point_no]] = c(
-      x_cord - edgeLength_x/2, x_cord + edgeLength_x/2, x_cord + edgeLength_x/2, x_cord - edgeLength_x/2
+      x_low, x_upp, x_upp, x_low
     )
     
     polygons_vectors$y[[point_no]] = c(
-      y_cord - edgeLength_y/2, y_cord - edgeLength_y/2, y_cord + edgeLength_y/2, y_cord + edgeLength_y/2
+      y_low, y_low, y_upp, y_upp
     )
     
   }
@@ -45,5 +59,11 @@ appendTheRectangles <- function(
   polygons_vectors$n = Germs$n
   
   return(polygons_vectors)
+  
+}
+
+appendTheCircles <- function(
+  Germs, meanEdgeLength = 0.3, varEdgeLength = 0, onlyInside = TRUE
+) {
   
 }
