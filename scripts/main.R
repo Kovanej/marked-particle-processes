@@ -20,7 +20,7 @@ colorInterior = "random"
 equalSites = TRUE
 onlyInside = TRUE
 pointPlotPch = 20
-grainsType = "rectangle"
+grainsType = "circles"
 
 bool_model = getAndPlotTheBooleanModelRealization(
   poissInt = poissInt, 

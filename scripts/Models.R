@@ -31,12 +31,11 @@ getAndPlotTheBooleanModelRealization <- function(
       onlyInside = onlyInside
     )
   }
-  # TODO this doesn't work right now
   else if (grainsType == "circle"){
     markedBoolean[["Grains"]] <- appendTheCircles(
       markedBoolean[["Germs"]],
-      meanEdgeLength = meanEdgeLength,
-      varEdgeLength = varEdgeLength,
+      meanRadius = meanEdgeLength,
+      varRadius = varEdgeLength,
       onlyInside = onlyInside
     )
   }
