@@ -14,7 +14,7 @@ source(file.path(paste0(getwd(), "/scripts"), "Plotting.R"))
 
 
 getAndPlotTheBooleanModelRealization <- function(
-  poissInt=100, meanEdgeLength = 0.2, varEdgeLength = 0,
+  poissInt=100, meanEdgeLength = 0.2, sdEdgeLength = 0,
   colorBackground = "white", colorBorder = "black", colorInterior = "random",
   equalSites = TRUE, onlyInside = TRUE, pointPlotPch = ".",
   grainsType = "rectangle"
@@ -26,7 +26,7 @@ getAndPlotTheBooleanModelRealization <- function(
     markedBoolean[["Grains"]] <- appendTheRectangles(
       markedBoolean[["Germs"]],
       meanEdgeLength = meanEdgeLength,
-      varEdgeLength = varEdgeLength,
+      sdEdgeLength = sdEdgeLength,
       equalSites = equalSites,
       onlyInside = onlyInside
     )
@@ -34,7 +34,7 @@ getAndPlotTheBooleanModelRealization <- function(
     markedBoolean[["Grains"]] <- appendTheCircles(
       markedBoolean[["Germs"]],
       meanRadius = meanEdgeLength,
-      varRadius = varEdgeLength,
+      sdRadius = sdEdgeLength,
       onlyInside = onlyInside
     )
   }
@@ -60,7 +60,7 @@ getAndPlotTheBooleanModelRealization <- function(
   }
   
   plot(markedBoolean[["Germs"]], 
-       #col=colorBackground, 
+       col=colorBackground, 
        pch = pointPlotPch,
        main = "")
   
