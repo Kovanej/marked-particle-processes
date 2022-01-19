@@ -4,15 +4,17 @@
 # library(plotrix)
 # library(randomcoloR)
 
+source(file.path(paste0(getwd(), "/scripts"), "Colors.R"))
 source(file.path(paste0(getwd(), "/scripts"), "Germs.R"))
 source(file.path(paste0(getwd(), "/scripts"), "Grains.R"))
 source(file.path(paste0(getwd(), "/scripts"), "Markings.R"))
+source(file.path(paste0(getwd(), "/scripts"), "Plotting.R"))
 
 
 
 
 getAndPlotTheBooleanModelRealization <- function(
-  poissInt=100, meanEdgeLength = 0.2, varEdgeLength = 0,
+  poissInt=100, meanEdgeLength = 0.2, sdEdgeLength = 0,
   colorBackground = "white", colorBorder = "black", colorInterior = "random",
   equalSites = TRUE, onlyInside = TRUE, pointPlotPch = ".",
   grainsType = "rectangle"
@@ -24,17 +26,15 @@ getAndPlotTheBooleanModelRealization <- function(
     markedBoolean[["Grains"]] <- appendTheRectangles(
       markedBoolean[["Germs"]],
       meanEdgeLength = meanEdgeLength,
-      varEdgeLength = varEdgeLength,
+      sdEdgeLength = sdEdgeLength,
       equalSites = equalSites,
       onlyInside = onlyInside
     )
-  }
-  # TODO this doesn't work right now
-  else if (grainsType == "circle"){
+  } else if (grainsType == "circle"){
     markedBoolean[["Grains"]] <- appendTheCircles(
       markedBoolean[["Germs"]],
-      meanEdgeLength = meanEdgeLength,
-      varEdgeLength = varEdgeLength,
+      meanRadius = meanEdgeLength,
+      sdRadius = sdEdgeLength,
       onlyInside = onlyInside
     )
   }
@@ -60,27 +60,15 @@ getAndPlotTheBooleanModelRealization <- function(
   }
   
   plot(markedBoolean[["Germs"]], 
-       #col=colorBackground, 
+      # col=colorBackground, 
        pch = pointPlotPch,
        main = "")
   
   if (colorBorder == "random"){
-    # colorBorder = hsv(
-    #   0.9,
-    #   runif(1) / 2,
-    #   runif(1) / 2,
-    #   runif(1) / 2
-    # )
     colorBorder = randomColor(count=1, luminosity="light")
   }
   
   if (colorInterior == "random"){
-    # colorInterior = hsv(
-    #   0.9,
-    #   runif(1) / 2,
-    #   runif(1) / 2,
-    #   runif(1) /2
-    # )
     # get the better transparency, so that points can be seen
     colorInterior_col = randomColor(
       count= 1, #length(levels(markedBoolean$GrainsMarks)), 
@@ -98,17 +86,16 @@ getAndPlotTheBooleanModelRealization <- function(
     
   }
   
-  for (i in 1:markedBoolean[["Grains"]]$n){
-    
-    polygon(
-      x = markedBoolean[["Grains"]]$x[[i]], y = markedBoolean[["Grains"]]$y[[i]],
-      col = colorInterior[1], #colorInterior[markedBoolean[["Germs"]]$marks[i]], 
-      # density = 1,
-      # angle = 30 * floor(( abs(rnorm(n=1, mean=90, sd = 40)) / 30 )),
-      border = colorBorder,
-      # lty = "twodash"
+  if (grainsType == "rectangle"){
+    plotTheRectangles(
+      markedBoolean = markedBoolean, colorBorder = colorBorder, colorInterior = colorInterior
       )
-
+  } else if (grainsType == "circle"){
+    plotTheCircles(
+      markedBoolean = markedBoolean, colorBorder = colorBorder, colorInterior = colorInterior
+    )
   }
   
-}
+  
+  
+  }

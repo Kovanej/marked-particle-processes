@@ -11,7 +11,7 @@ generatePoisson <- function(lambda, homogeneous = TRUE){
 
 
 appendTheRectangles <- function(
-  Germs, meanEdgeLength = 0.3, varEdgeLength = 0,
+  Germs, meanEdgeLength = 0.3, sdEdgeLength = 0,
   equalSites = TRUE, onlyInside = TRUE
 ){
   
@@ -25,11 +25,11 @@ appendTheRectangles <- function(
     x_cord <- Germs$x[point_no]
     y_cord <- Germs$y[point_no]
     
-    edgeLength_x = abs(rnorm(n=1, mean=meanEdgeLength, sd = varEdgeLength))
+    edgeLength_x = abs(rnorm(n=1, mean=meanEdgeLength, sd = sdEdgeLength))
     if (equalSites){
       edgeLength_y = edgeLength_x
     } else {
-      edgeLength_y = abs(rnorm(n=1, mean=meanEdgeLength, sd = varEdgeLength))
+      edgeLength_y = abs(rnorm(n=1, mean=meanEdgeLength, sd = sdEdgeLength))
     }
     
     if (onlyInside){
@@ -63,7 +63,32 @@ appendTheRectangles <- function(
 }
 
 appendTheCircles <- function(
-  Germs, meanEdgeLength = 0.3, varEdgeLength = 0, onlyInside = TRUE
-) {
+  Germs, meanRadius = 0.3, sdRadius = 0, onlyInside = TRUE
+  ){
+  
+  circles_vectors <- list()
+  
+  circles_vectors$center_x <- list()
+  circles_vectors$center_y <- list()
+  circles_vectors$rad <- list()
+  
+  for (point_no in 1:Germs$n){
+    
+    x_cord <- Germs$x[point_no]
+    y_cord <- Germs$y[point_no]
+    
+    circles_vectors$center_x[[point_no]] = x_cord
+    
+    circles_vectors$center_y[[point_no]] = y_cord
+    
+    radius = abs(rnorm(n=1, mean = meanRadius, sd = sdRadius))
+    
+    circles_vectors$rad[[point_no]] = radius
+    
+  }
+  
+  circles_vectors$n = Germs$n
+  
+  return(circles_vectors)
   
 }
