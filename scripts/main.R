@@ -11,11 +11,11 @@ source(file.path(paste0(getwd(), "/scripts"), "Markings.R"))
 source(file.path(paste0(getwd(), "/scripts"), "Plotting.R"))
 source(file.path(paste0(getwd(), "/scripts"), "Models.R"))
 
-poissInt = 500
-meanEdgeLength = 0.25
-sdEdgeLength = 0.02
-colorBackground = "random" 
-colorBorder = "random"
+poissInt = 50
+meanEdgeLength = 0.05
+sdEdgeLength = 0.0
+colorBackground = "white" 
+colorBorder = "black"
 colorInterior = "random"
 equalSites = TRUE
 onlyInside = TRUE

@@ -60,27 +60,15 @@ getAndPlotTheBooleanModelRealization <- function(
   }
   
   plot(markedBoolean[["Germs"]], 
-       col=colorBackground, 
+      # col=colorBackground, 
        pch = pointPlotPch,
        main = "")
   
   if (colorBorder == "random"){
-    # colorBorder = hsv(
-    #   0.9,
-    #   runif(1) / 2,
-    #   runif(1) / 2,
-    #   runif(1) / 2
-    # )
     colorBorder = randomColor(count=1, luminosity="light")
   }
   
   if (colorInterior == "random"){
-    # colorInterior = hsv(
-    #   0.9,
-    #   runif(1) / 2,
-    #   runif(1) / 2,
-    #   runif(1) /2
-    # )
     # get the better transparency, so that points can be seen
     colorInterior_col = randomColor(
       count= 1, #length(levels(markedBoolean$GrainsMarks)), 
