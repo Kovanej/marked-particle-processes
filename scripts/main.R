@@ -12,15 +12,15 @@ source(file.path(paste0(getwd(), "/scripts"), "Plotting.R"))
 source(file.path(paste0(getwd(), "/scripts"), "Models.R"))
 
 poissInt = 50
-meanEdgeLength = 0.1
-varEdgeLength = 0.0
-colorBackground = "white" 
+meanEdgeLength = 0.05
+varEdgeLength = 0.03
+colorBackground = "random" 
 colorBorder = "black"
-colorInterior = "random"
+colorInterior = "#FCA4BD4D"
 equalSites = TRUE
 onlyInside = TRUE
 pointPlotPch = 20
-grainsType = "circles"
+grainsType = "circle"
 
 bool_model = getAndPlotTheBooleanModelRealization(
   poissInt = poissInt, 

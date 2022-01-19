@@ -30,8 +30,7 @@ getAndPlotTheBooleanModelRealization <- function(
       equalSites = equalSites,
       onlyInside = onlyInside
     )
-  }
-  else if (grainsType == "circle"){
+  } else if (grainsType == "circle"){
     markedBoolean[["Grains"]] <- appendTheCircles(
       markedBoolean[["Germs"]],
       meanRadius = meanEdgeLength,
@@ -103,8 +102,7 @@ getAndPlotTheBooleanModelRealization <- function(
     plotTheRectangles(
       markedBoolean = markedBoolean, colorBorder = colorBorder, colorInterior = colorInterior
       )
-  }
-  else if (grainsType == "circle"){
+  } else if (grainsType == "circle"){
     plotTheCircles(
       markedBoolean = markedBoolean, colorBorder = colorBorder, colorInterior = colorInterior
     )
@@ -112,4 +110,4 @@ getAndPlotTheBooleanModelRealization <- function(
   
   
   
-}
+  }

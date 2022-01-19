@@ -81,7 +81,7 @@ appendTheCircles <- function(
     
     circles_vectors$center_y[[point_no]] = y_cord
     
-    radius = abs(rnorm(n=1, mean = meanRadius, varRadius = varRadius))
+    radius = abs(rnorm(n=1, mean = meanRadius, sd = varRadius))
     
     circles_vectors$rad[[point_no]] = radius
     

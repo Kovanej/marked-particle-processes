@@ -29,7 +29,9 @@ plotTheCircles <- function(
     
     draw.circle(
       x = markedBoolean[["Germs"]]$x[[i]], y = markedBoolean[["Germs"]]$y[[i]],
-      radius = markedBoolean[["Germs"]]$x[[i]]
+      radius = markedBoolean[["Grains"]]$rad[[i]],
+      border = colorBorder,
+      col = colorInterior[1]
       )
     
   }
