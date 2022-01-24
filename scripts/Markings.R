@@ -9,7 +9,8 @@ assingTheNearestNeighbourBernoulli <- function(germs){
     
     germ_nearest_neighbour = nndist(germs)[germ]
     
-    mark = rbinom(n=1, size=1, prob = max(0, (1-germ_nearest_neighbour)/2))
+    # mark = rbinom(n=1, size=1, prob = max(0, (1-germ_nearest_neighbour)/2))
+    mark = rbinom(n=1, size=1, prob = 1/2)
     
     marks = append(marks, mark)
     

@@ -31,7 +31,7 @@ plotTheCircles <- function(
       x = markedBoolean[["Germs"]]$x[[i]], y = markedBoolean[["Germs"]]$y[[i]],
       radius = markedBoolean[["Grains"]]$rad[[i]],
       border = colorBorder,
-      col = colorInterior[1]
+      col = colorInterior[markedBoolean[["Germs"]]$marks[i]]
       )
     
   }
@@ -40,7 +40,7 @@ plotTheCircles <- function(
 
 
 
-draw_circle_extended <- function (x, y, radius, nv = 100, border = NULL, col = NA, lty = 1, 
+draw_circle_extended <- function (x, y, radius, nv = 1000, border = NULL, col = NA, lty = 1, 
           density = NULL, angle = 45, lwd = 1, onlyInside = TRUE) 
 {
   xylim <- par("usr")
@@ -54,7 +54,6 @@ draw_circle_extended <- function (x, y, radius, nv = 100, border = NULL, col = N
     xv <- cos(angles) * radius[circle] + x
     yv <- sin(angles) * radius[circle] * ymult + y
     if (onlyInside){
-      
       for (i in 1:length(xv)){
         xv[i] = min(max(xv[i], 0), 1)
         yv[i] = min(max(yv[i], 0), 1)
