@@ -41,5 +41,6 @@ vignettes/*.pdf
 
 # My added constraints
 *.jpg
+*.jpeg
 *.pdf
 scripts/TrialSpace.R
