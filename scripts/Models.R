@@ -43,10 +43,10 @@ getAndPlotTheBooleanModelRealization <- function(
     markedBoolean[["Germs"]]
   )
 
-  # markedBoolean$Germs$markformat = "vector"
-  # markedBoolean$Germs$marks = markedBoolean$GrainsMarks
+  markedBoolean$Germs$markformat = "vector"
+  markedBoolean$Germs$marks = markedBoolean$GrainsMarks
   
-  # plot(markedBoolean$Germs)
+  plot(markedBoolean$Germs)
   
   if (colorBackground == "random"){
     
@@ -59,10 +59,10 @@ getAndPlotTheBooleanModelRealization <- function(
     # colorBackground = randomColor(count=1, luminosity="light")
   }
   
-  plot(markedBoolean[["Germs"]], 
-      # col=colorBackground, 
-       pch = pointPlotPch,
-       main = "")
+  # plot(markedBoolean[["Germs"]], 
+  #      col=colorBackground, 
+  #      pch = pointPlotPch,
+  #      main = "")
   
   if (colorBorder == "random"){
     colorBorder = randomColor(count=1, luminosity="light")
@@ -71,7 +71,7 @@ getAndPlotTheBooleanModelRealization <- function(
   if (colorInterior == "random"){
     # get the better transparency, so that points can be seen
     colorInterior_col = randomColor(
-      count= 1, #length(levels(markedBoolean$GrainsMarks)), 
+      count=length(levels(markedBoolean$GrainsMarks)), 
       luminosity="light"
       )
     colorInterior_hsv = rgb2hsv(col2rgb(colorInterior_col))
@@ -96,6 +96,6 @@ getAndPlotTheBooleanModelRealization <- function(
     )
   }
   
-  
+  return(markedBoolean)
   
   }
