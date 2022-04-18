@@ -22,6 +22,8 @@ onlyInside = TRUE
 pointPlotPch = 20
 grainsType = "circle"
 
+par(mar=c(5, 4, 4, 8), xpd=TRUE)
+
 bool_model = getAndPlotTheBooleanModelRealization(
   poissInt = poissInt, 
   meanEdgeLength = meanEdgeLength, 

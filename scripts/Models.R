@@ -14,7 +14,7 @@ source(file.path(paste0(getwd(), "/scripts"), "Plotting.R"))
 
 
 getAndPlotTheBooleanModelRealization <- function(
-  poissInt=100, meanEdgeLength = 0.2, sdEdgeLength = 0,
+  poissInt=100, meanEdgeLength = 0.1, sdEdgeLength = 0,
   colorBackground = "white", colorBorder = "black", colorInterior = "random",
   equalSites = TRUE, onlyInside = TRUE, pointPlotPch = ".",
   grainsType = "rectangle"
@@ -46,7 +46,10 @@ getAndPlotTheBooleanModelRealization <- function(
   markedBoolean$Germs$markformat = "vector"
   markedBoolean$Germs$marks = markedBoolean$GrainsMarks
   
-  plot(markedBoolean$Germs)
+  # plot(markedBoolean$Germs)
+  plot.new()
+  frame()
+  # plot(0,0, xlim=c(0,1), ylim=c(0,1))
   
   if (colorBackground == "random"){
     
@@ -79,7 +82,7 @@ getAndPlotTheBooleanModelRealization <- function(
     for (col in 1:ncol(colorInterior_hsv)){
       colorInterior = append(
         colorInterior, 
-        hsv(colorInterior_hsv[1, col], colorInterior_hsv[2, col], colorInterior_hsv[3, col], alpha = 0.3)
+        hsv(colorInterior_hsv[1, col], colorInterior_hsv[2, col], colorInterior_hsv[3, col], alpha = 0.5)
       )
       print(colorInterior)
     }
@@ -95,6 +98,12 @@ getAndPlotTheBooleanModelRealization <- function(
       markedBoolean = markedBoolean, colorBorder = colorBorder, colorInterior = colorInterior
     )
   }
+  
+  legend(
+    "topright", inset=c(-0.2, 0), legend=c("Color of Mark 1", "Color of Mark 2"),
+    col=c(colorInterior[[1]], colorInterior[[2]]), cex=0.8
+  )
+  # print()
   
   return(markedBoolean)
   
