@@ -8,7 +8,7 @@ WIN_Y_MIN = 0
 WIN_X_MAX = 1
 WIN_Y_MAX = 1
 
-MIN_SEGMENT_LEN = 0.2
+MIN_SEGMENT_LEN = 0.1
 MAX_SEGMENT_LEN = 0.4
 
 
@@ -60,7 +60,7 @@ if (! OVERLAP){
 
 L <- psp(x0=x0, y0=y0, x1=x1, y1=y1, window = owin(), check = FALSE)
 
-plot(L, main="")
+plot(L, main="", style = "width")
 
 
 # MARKS
@@ -95,15 +95,15 @@ L$marks = as.factor(marks)
 
 marks_colors = c()
 marks_colors = randomColor(count=2, luminosity="dark")
-# 
-# for (i in 1:2){
-#   marks_colors[i] = hsv(
-#     runif(1),
-#     1/3,
-#     runif(1),
-#     runif(1)
-#   )
-# } 
+
+for (i in 1:2){
+  marks_colors[i] = hsv(
+    runif(1),
+    2/3,
+    runif(1),
+    runif(1)
+  )
+}
 
 plot.psp(
   L, main="", col = marks_colors
